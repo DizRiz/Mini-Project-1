@@ -4,27 +4,30 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <tdnk rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css" />
     <title>Mini Project 1</title>
   </head>
   <body>
-    <table>
-        <thead>
+    <h1>Bus Arrival Timings</h1>
+    <div>
+      <input type="search" title="searchBox" name="searchBox" id="searchBox">
+      <input type="button" value="Search">
+        <table>
+          <thead>
             <tr>
-                <th>Bus</th>
-                <th>Service</th>
-                <th>Next Bus</th>
-                <th>Second Bus</th>
-                <th>Third Bus</th>
+              <th>Bus</th>
+              <th>Service</th>
+              <th>Next Bus</th>
+              <th>Second Bus</th>
+              <th>Third Bus</th>
             </tr>
-        </thead>
-        <tbody>
-
-        </tbody>
-    </table>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
     <script src="script.js"></script>
     <script>
-    fetch("https://arrivelah2.busrouter.sg/?id=53389")
+      fetch("https://arrivelah2.busrouter.sg/?id=53389")
         .then((response) => {
           return response.json();
         })
@@ -39,9 +42,13 @@
                 <td>${bus.next2.time}</td>
             </tr>
                         `;
+            // if (markup == null) {
+            //   return ("")
+            // }
             document
               .querySelector("tbody")
               .insertAdjacentHTML("beforeend", markup);
+              console.log(data);
           });
         })
         .catch((error) => console.log(error));
